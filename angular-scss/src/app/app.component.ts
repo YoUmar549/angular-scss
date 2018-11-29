@@ -20,7 +20,7 @@ import 'rxjs/add/observable/interval'; //la méthode  interval() , qui crée un 
 
   export class AppComponent implements OnInit {
 
-      secondes: number;
+      secondes: string;
 
       ngOnInit() {
         //counter reçoit un chiffre croissant à chaque seconde
