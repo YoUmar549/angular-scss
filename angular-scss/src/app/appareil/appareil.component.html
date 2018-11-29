@@ -1,0 +1,20 @@
+<!-- ngClass est une directive par attribut permettant d'ajouter des classes css au contenu du DOM voulu -->
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': appareilStatus === 'allumé',
+                'list-group-item-danger': appareilStatus === 'éteint'}">
+  <div style="width:20px;height:20px;background-color:red;"
+       *ngIf="appareilStatus === 'éteint'"></div>
+       <!-- ngStyle est une directive par attribut permettant d'appliquer un style à un contenu du DOM voulu -->
+       <h4 [ngStyle]="{color: getColor()}">Appareil : {{ appareilName }} -- Statut : {{ getStatus() }}</h4>
+       <a [routerLink]="[id]">Détail</a> <!-- Ici, on utilise le format array pour  routerLink  en property binding
+                                              afin d'accéder à la variable  id -->
+
+    <button class="btn btn-sm btn-success"
+            *ngIf="appareilStatus === 'éteint'"
+            (click)="onSwitch()">Allumer</button>
+    <button class="btn btn-sm btn-danger"
+            *ngIf="appareilStatus === 'allumé'"
+            (click)="onSwitch()">Eteindre</button>
+</li>
+  <!-- ngModel est une directive permettant de faire du two-way Binding (communication dans les deux sens
+       entre l'utilisateur et le site comme dans un formulaire) -->

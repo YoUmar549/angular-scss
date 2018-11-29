@@ -1,0 +1,30 @@
+<div class="col-xs-12">
+  <h2>Mes appareils</h2>
+
+  <!-- DatePipe avec un ordre très important
+  <p>Mis à jour : {{ lastUpdate | date }}</p>
+  <p>Mis à jour : {{ lastUpdate | date: 'short' }}</p>
+  <p>Mis à jour : {{ lastUpdate | date: 'y MMMM EEEE d' }}</p>
+  <p>Mis à jour : {{ lastUpdate | date: 'y MMMM EEEE d' | uppercase }}</p>
+  -->
+
+  <!-- async permet d'indiquer à Angular d'attendre l'arrivée des données avant d'exécuter les autres pipes -->
+  <p>Mis à jour : {{ lastUpdate | async | date: 'y MMMM EEEE d' | uppercase }}</p>
+
+  
+  <ul class="list-group">
+    <app-appareil  *ngFor="let appareil of appareils; let i = index"
+                   [appareilName]="appareil.name"
+                   [appareilStatus]="appareil.status"
+                   [index]="i"
+                   [id]="appareil.id"></app-appareil>
+  </ul>
+  <!-- On lance la méthode onAllumer() lorsque l'utilisateur appuie sur le bouton -->
+  <button class="btn btn-success"
+          [disabled]="!isAuth"
+          (click)="onAllumer()">Tout allumer</button>
+  <button class="btn btn-danger"
+          [disabled]="!isAuth"
+          (click)="onEteindre()">Tout éteindre</button>
+
+</div>
